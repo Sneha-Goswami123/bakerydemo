@@ -129,7 +129,9 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "bakerydemodb"),
+            "NAME": os.path.join(
+                BASE_DIR, os.environ.get("DATABASE_NAME", "bakerydemodb")
+            ),
         }
     }
 
@@ -216,8 +218,8 @@ WAGTAIL_I18N_ENABLED = True
 
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ("en", "English"),
-    ("de", "Deutsch"),
-    ("ar", "العربيّة"),
+    ("de", "German"),
+    ("ar", "Arabic"),
 ]
 
 WAGTAILIMAGES_AVIF_QUALITY = 60
